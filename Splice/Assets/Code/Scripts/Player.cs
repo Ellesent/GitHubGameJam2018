@@ -1,21 +1,34 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Player : MonoBehaviour {
+public class Player : MonoBehaviour
+{
 
-    Rigidbody2D rb; // The rigidbody on the player objet
+    #region Variables
+    Rigidbody2D rb; // The rigidbody on the player object
+    #endregion
 
-	// Use this for initialization
-	void Start () {
+    #region Properties
+    public Vector2 SpriteCenter { get; set; }
+    #endregion
+
+    #region Unity Methods
+    // Use this for initialization
+    void Start()
+    {
 
         rb = GetComponent<Rigidbody2D>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+        // Get center of sprite
+        SpriteCenter = new Vector2(GetComponent<SpriteRenderer>().sprite.bounds.size.x / 2 * transform.localScale.x, GetComponent<SpriteRenderer>().sprite.bounds.size.y / 2 * transform.localScale.y);
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+
+    }
 
     private void FixedUpdate()
     {
@@ -28,7 +41,9 @@ public class Player : MonoBehaviour {
         // keep increasing velocity if hitting a speed object
         if (collision.gameObject.GetComponent<SetEffect>() && collision.gameObject.GetComponent<SetEffect>().effect == EffectEnum.Effects.speed)
         {
-            rb.AddForce(rb.velocity * 0.05f, ForceMode2D.Impulse);  
+            rb.AddForce(rb.velocity * 0.05f, ForceMode2D.Impulse);
         }
     }
+
+    #endregion
 }
