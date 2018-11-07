@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
-    Rigidbody2D rb;
+    Rigidbody2D rb; // The rigidbody on the player objet
 
 	// Use this for initialization
 	void Start () {
@@ -19,6 +19,7 @@ public class Player : MonoBehaviour {
 
     private void FixedUpdate()
     {
+        // Make sure our speed caps out at 15
         rb.velocity = Vector2.ClampMagnitude(rb.velocity, 15f);
     }
 
