@@ -7,7 +7,7 @@ public class Cam : MonoBehaviour
 {
 
     [SerializeField]
-    GameObject playerPos; // TODO: Grab this by finding the game object rather than passing in through field -will break on other scenes
+    GameObject player; // TODO: Grab this by finding the game object rather than passing in through field -will break on other scenes
 
     [SerializeField]
     ScreenUtils screenUtils; // TODO: Grab this by finding game object 
@@ -27,9 +27,9 @@ public class Cam : MonoBehaviour
     {
 
         // Setting the x position of the camera to have player ball on right side of screen
-        xPos = playerPos.transform.position.x + (screenUtils.ScreenWidthCoord) - playerPos.GetComponent<Player>().SpriteCenter.x - Constants.PLAYER_PADDING_FROM_SCREEN;
+        xPos = player.transform.position.x + (screenUtils.ScreenWidthCoord) - player.GetComponent<Player>().SpriteCenter.x - Constants.PLAYER_PADDING_FROM_SCREEN;
 
-        transform.position = new Vector3(xPos, playerPos.transform.position.y, -10);
+        transform.position = new Vector3(xPos, player.transform.position.y, -10);
         transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y, initialY, 500), -10);
     }
 }

@@ -33,7 +33,7 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         // Make sure our speed caps out at 15
-        rb.velocity = Vector2.ClampMagnitude(rb.velocity, 15f);
+        rb.velocity = Vector2.ClampMagnitude(rb.velocity, Constants.BALL_MAX_VELOCITY);
     }
 
     private void OnCollisionStay2D(Collision2D collision)
